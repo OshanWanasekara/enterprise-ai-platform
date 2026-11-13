@@ -1,5 +1,57 @@
+# Python
 venv/
 __pycache__/
 .pytest_cache/
+
+# Environment secrets
 .env
-*.pyc
+
+# Docker
+*.tar
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfvars
+terraform/crash.log
+terraform/generated/
+
+# Kubernetes
+*.secret.yaml
+# Python virtual environments
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Kubernetes downloaded binaries
+kubectl
+minikube
+minikube-linux-amd64
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+
+# Logs
+*.log
