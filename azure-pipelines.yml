@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  vmImage: RHEL-Docker-Agents
+  name: RHEL-Docker-Agents
 
 variables:
   imageName: enterprise-ai-platform
