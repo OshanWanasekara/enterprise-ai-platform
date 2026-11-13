@@ -8,9 +8,12 @@ variables:
   imageName: enterprise-ai-platform
 
 steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.12'
+    - script: |
+    python3.12 -m venv .venv
+    .venv/bin/python -m pip install --upgrade pip
+    .venv/bin/python -m pip install -r requirements.txt
+    .venv/bin/python -m pip install pytest
+  displayName: 'Install Python dependencies'
     displayName: 'Select Python 3.12'
 
   - script: |
@@ -20,7 +23,8 @@ steps:
     displayName: 'Install dependencies'
 
   - script: |
-      pytest -v
+    .venv/bin/python -m pytest -v
+  displayName: 'Run pytest'
     displayName: 'Run application tests'
 
   - task: Docker@2
