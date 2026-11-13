@@ -1,4 +1,6 @@
 
+  
+
 trigger:
   - main
 
@@ -33,6 +35,21 @@ steps:
     inputs:
       command: build
       repository: $(imageName)
+
+
+  # Build and push Docker image to ACR
+  - task: Docker@2
+    displayName: 'Build and push image to ACR'
+    inputs:
+      command: buildAndPush
+      containerRegistry: 'acr-service-connection'
+      repository: 'enterprise-ai-platform'
+      Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+      buildContext: '$(Build.SourcesDirectory)'
+      tags: |
+        $(Build.BuildId)
+        latest
+
       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
       buildContext: '$(Build.SourcesDirectory)'
       tags: |
